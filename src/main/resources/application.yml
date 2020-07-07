@@ -1,0 +1,47 @@
+server:
+  port: 8020
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fzyp?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&characterSetResults=utf8
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+  server:
+    port: 9001
+  security:
+    enabled: false
+  #actuator端口
+
+  #修改访问路径  2.0之前默认是/   2.0默认是 /actuator  可以通过这个属性值修改
+  #management.endpoints.web.base-path: /actuator
+
+  #显示健康具体信息  默认不会显示详细信息
+  #management.endpoint.health.show-details:ALWAYS
+
+
+my:
+  name: forezp
+  age: 12
+  number: ${random.int}
+  uuid: ${random.uuid}
+  max: ${random.int(10)}
+  value: ${random.value}
+  greeting: hi,i'm ${my.name}
+
+#spring:
+  #profiles:
+  #  active: dev
